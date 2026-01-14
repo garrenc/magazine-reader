@@ -1,5 +1,4 @@
 import Link from "next/link";
-import LayoutSwitcher from "../components/LayoutSwitcher";
 import CoverImage from "../components/CoverImage";
 import { getCoverImage, getIssueTitle } from "../data/issue-config";
 
@@ -8,9 +7,7 @@ export default function MinimalHome() {
   const issueTitle = getIssueTitle();
 
   return (
-    <>
-      <LayoutSwitcher currentLayout="minimal" />
-      <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-12">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background px-4 py-12">
         <div className="w-full max-w-md text-center">
           {coverImage ? (
             <CoverImage src={coverImage} alt="Обложка журнала" />
@@ -29,14 +26,13 @@ export default function MinimalHome() {
           </p>
           
           <Link
-            href="/contents?layout=minimal"
+            href="/contents"
             className="inline-block w-full rounded-lg bg-foreground px-6 py-4 text-center font-medium text-background"
           >
-            Читать выпуск
-          </Link>
-        </div>
+          Читать выпуск
+        </Link>
       </div>
-    </>
+    </div>
   );
 }
 

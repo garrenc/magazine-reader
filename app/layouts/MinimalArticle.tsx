@@ -1,5 +1,4 @@
 import ProgressIndicator from "../components/ProgressIndicator";
-import LayoutSwitcher from "../components/LayoutSwitcher";
 import ArticleHeader from "../components/ArticleHeader";
 import ArticleImage from "../components/ArticleImage";
 import { Article } from "../data/articles";
@@ -11,7 +10,6 @@ interface MinimalArticleProps {
 export default function MinimalArticle({ article }: MinimalArticleProps) {
   return (
     <>
-      <LayoutSwitcher currentLayout="minimal" />
       <ProgressIndicator />
       <ArticleHeader title={article.title} author={article.author} />
       
@@ -25,8 +23,12 @@ export default function MinimalArticle({ article }: MinimalArticleProps) {
           </header>
 
           {article.heroImage && (
-            <div className="mb-8 aspect-video w-full overflow-hidden rounded-lg bg-muted/20 relative">
-              <ArticleImage src={article.heroImage} alt={article.title} />
+            <div className="mb-8 w-full rounded-lg bg-muted/20 overflow-hidden">
+              <ArticleImage 
+                src={article.heroImage} 
+                alt={article.title}
+                className="w-full h-auto object-contain"
+              />
             </div>
           )}
 

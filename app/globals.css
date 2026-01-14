@@ -109,6 +109,52 @@ h1, h2, h3, h4, h5, h6 {
   text-underline-offset: 2px;
 }
 
+.prose a:hover {
+  opacity: 0.8;
+}
+
+.prose .social-links {
+  margin-top: 2em;
+  padding-top: 1.5em;
+  border-top: 1px solid var(--border);
+}
+
+.prose .social-links p {
+  margin-bottom: 1em;
+  font-weight: 600;
+}
+
+.prose .social-links-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: center;
+}
+
+.prose .social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--foreground);
+  text-decoration: none;
+  padding: 0.5em 1em;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.prose .social-link:hover {
+  background-color: var(--muted);
+  background-opacity: 0.1;
+  opacity: 1;
+}
+
+.prose .social-link svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
 /* Newspaper layout styles */
 .newspaper-header {
   border-bottom: 2px solid var(--border);

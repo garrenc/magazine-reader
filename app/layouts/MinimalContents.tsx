@@ -1,31 +1,40 @@
 import Link from "next/link";
 import { getAllArticles } from "../data/articles";
-import LayoutSwitcher from "../components/LayoutSwitcher";
+import ArticleImage from "../components/ArticleImage";
 
 export default function MinimalContents() {
   const articles = getAllArticles();
 
   return (
-    <>
-      <LayoutSwitcher currentLayout="minimal" />
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         <div className="mx-auto max-w-2xl px-4 py-8">
           <h1 className="mb-8 font-heading text-3xl font-bold text-foreground">
             Содержание
           </h1>
           
           <nav>
-            <ul className="space-y-4">
+            <ul className="space-y-6">
               {articles.map((article) => (
                 <li key={article.slug}>
                   <Link
-                    href={`/article/${article.slug}?layout=minimal`}
-                    className="block rounded-lg border border-border bg-background p-4 hover:bg-muted/10"
+                    href={`/article/${article.slug}`}
+                    className="block rounded-lg border border-border bg-background overflow-hidden hover:bg-muted/10 transition-colors"
                   >
-                    <h2 className="mb-2 font-heading text-xl font-bold text-foreground">
-                      {article.title}
-                    </h2>
-                    <p className="text-sm text-muted">{article.author}</p>
+                    {article.heroImage && (
+                      <div className="w-full aspect-[16/9] overflow-hidden bg-muted/20">
+                        <ArticleImage 
+                          src={article.heroImage} 
+                          alt={article.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    )}
+                    <div className="p-4">
+                      <h2 className="mb-2 font-heading text-xl font-bold text-foreground">
+                        {article.title}
+                      </h2>
+                      <p className="text-sm text-muted">{article.author}</p>
+                    </div>
                   </Link>
                 </li>
               ))}
@@ -34,7 +43,7 @@ export default function MinimalContents() {
           
           <div className="mt-8">
             <Link
-              href="/?layout=minimal"
+              href="/"
               className="text-muted hover:text-foreground"
             >
               ← На главную
@@ -42,7 +51,6 @@ export default function MinimalContents() {
           </div>
         </div>
       </div>
-    </>
   );
 }
 
